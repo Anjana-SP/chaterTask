@@ -45,8 +45,22 @@ We have 2 tables in the database. The `Customer` table stores customer details, 
 |-----------|-------------------|--------------|--------|--------------------------|
 | 101       | bluetooth Remote  | 120          | 1      | 2025-05-23 05:30:00      |
 | 102       | books             | 70           | 1      | 2025-06-10 15:10:04      |
+| 103       | stationary        | 40           | 2      | 2025-06-11 15:20:04
 -------------------------------------------------------------------------------------
-##Example
+
+## Reward Points Calculation Rules
+
+1. **For purchases over $100**:
+   - Earn **2 points** for every dollar spent **above $100**.
+   - Plus **1 point** for every dollar spent **between $50 and $100**.
+
+2. **For purchases between $50 and $100**:
+   - Earn **1 point** for every dollar spent **above $50**.
+
+3. **For purchases $50 or below**:
+   - **No reward points** are earned.
+
+## Example
 
 In the current month (June 2025):
 Customer 1 made a purchase of $70.
@@ -57,6 +71,16 @@ Two purchases: $120 (May) and $70 (June).
 Earned a total of 110 reward points:
 90 points from the $120 purchase (50 points for $50–$100, and 2×20 = 40 points for the amount over $100).
 20 points from the $70 purchase.
+
+Since the customer made a purchase of $50, which is at or below the reward threshold, no reward points were awarded to Customer 4.
+
+| Purchase Amount ($) | Reward Points Earned | Explanation |
+|---------------------|----------------------|-------------|
+| 120                 | 90                   | 50 pts for $50–$100, 40 pts for $20 over $100 |
+| 70                  | 20                   | 20 pts for $20 over $50 |
+| 50                  | 0                    | No points earned for $50 or below |
+
+---
 
 ## Testing
 This project includes unit tests for all major service methods using JUnit 5 and Mockito.
